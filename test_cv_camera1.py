@@ -4,8 +4,8 @@ from pythonosc import udp_client
 
 # Configura el cliente OSC para enviar mensajes a una dirección y puerto específicos
 client = udp_client.SimpleUDPClient("192.168.15.13", 5000)
-address1 = "/mi/direccion/x/"
-address2 = "/mi/direccion/y/"
+address1 = "/posX/"
+address2 = "/posY/"
 
 # Cargamos el modelo YOLO preentrenado
 directorio = "/home/pi/deteccion/media/"
@@ -62,7 +62,8 @@ while cap.isOpened():
                     x_promedio = int(sum(x_actual) / len(x_actual))
                     #print(y_promedio)
                     print(f'Persona encontrada en posición: X={x}, Y={y}')
-                    client.send_message(address1, [x_promedio, y_promedio])
+                    client.send_message(address1, x_promedio)
+                    client.send_message(address2, y_promedio)
         # Mostramos el frame con las personas detectadas
         #cv2.imshow('Person Detection', frame)
 
