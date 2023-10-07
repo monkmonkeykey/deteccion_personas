@@ -4,8 +4,8 @@ from pythonosc import udp_client
 
 # Configura el cliente OSC para enviar mensajes a una dirección y puerto específicos
 client = udp_client.SimpleUDPClient("192.168.15.13", 5000)
-address1 = "/mi/direccion/1"
-address2 = "/mi/direccion/2"
+address1 = "/mi/direccion/x/"
+address2 = "/mi/direccion/y/"
 
 # Cargamos el modelo YOLO preentrenado
 directorio = "/home/pi/deteccion/media/"
