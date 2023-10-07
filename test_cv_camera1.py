@@ -8,8 +8,8 @@ net = cv2.dnn.readNet('/home/pi/deteccion/media/yolov3.weights', '/home/pi/detec
 classes = ["person"]
 
 # Inicializamos la cámara con resolución más baja
-#cap = cv2.VideoCapture("/home/pi/deteccion/media/test1.mp4")
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture("/home/pi/deteccion/media/test1.mp4")
+#cap = cv2.VideoCapture(0)
 cap.set(3, 640)  # Ancho (Width)
 cap.set(4, 480)  # Alto (Height)
 
