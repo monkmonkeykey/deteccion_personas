@@ -2,19 +2,19 @@ import cv2
 import numpy as np
 
 # Cargamos el modelo YOLO preentrenado
-net = cv2.dnn.readNet('/deteccion/media/yolov3.weights', '/deteccion/media/yolov3.cfg')
+net = cv2.dnn.readNet('/home/pi/deteccion/media/yolov3.weights', '/home/pi/deteccion/media/yolov3.cfg')
 
 # Configuramos las clases que YOLO puede detectar (personas en este caso)
 classes = ["person"]
 
 # Inicializamos la cámara con resolución más baja
-cap = cv2.VideoCapture("/deteccion/media/test2.mp4")
+cap = cv2.VideoCapture("/home/pi/deteccion/media/test2.mp4")
 cap.set(3, 640)  # Ancho (Width)
 cap.set(4, 480)  # Alto (Height)
 
 # Procesa cada quinto frame
 frame_counter = 0
-frame_skip = 30
+frame_skip = 1
 
 while cap.isOpened():
     ret, frame = cap.read()
