@@ -1,14 +1,22 @@
 import cv2
 import numpy as np
+from pythonosc import udp_client
+
+# Configura el cliente OSC para enviar mensajes a una dirección y puerto específicos
+client = udp_client.SimpleUDPClient("192.168.15.13", 5000)
+address1 = "/mi/direccion/1"
+address2 = "/mi/direccion/2"
 
 # Cargamos el modelo YOLO preentrenado
-net = cv2.dnn.readNet('/home/pi/deteccion/media/yolov3.weights', '/home/pi/deteccion/media/yolov3.cfg')
+directorio = "/home/pi/deteccion/media/"
+net = cv2.dnn.readNet(directorio + 'yolov3.weights', directorio + 'yolov3.cfg')
+#net = cv2.dnn.readNet('/Users/josue/Downloads/yolov3.weights', '/Users/josue/Downloads/yolov3.cfg')
 
 # Configuramos las clases que YOLO puede detectar (personas en este caso)
 classes = ["person"]
 
 # Inicializamos la cámara con resolución más baja
-#cap = cv2.VideoCapture("/home/pi/deteccion/media/test2.mp4")
+#cap = cv2.VideoCapture("/Users/josue/Downloads/test2.mp4")
 cap = cv2.VideoCapture(0)
 cap.set(3, 640)  # Ancho (Width)
 cap.set(4, 380)  # Alto (Height)
@@ -48,8 +56,13 @@ while cap.isOpened():
                     cv2.rectangle(frame, (x, y), (x + width, y + height), (0, 255, 0), 2)
 
                     # Imprimimos la posición de la persona detectada
+                    y_actual = list({y})
+                    y_promedio = int(sum(y_actual) / len(y_actual))
+                    x_actual = list({x})
+                    x_promedio = int(sum(x_actual) / len(x_actual))
+                    #print(y_promedio)
                     print(f'Persona encontrada en posición: X={x}, Y={y}')
-
+                    client.send_message(address1, [x_promedio, y_promedio])
         # Mostramos el frame con las personas detectadas
         #cv2.imshow('Person Detection', frame)
 
