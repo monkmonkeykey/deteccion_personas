@@ -11,7 +11,7 @@ classes = ["person"]
 cap = cv2.VideoCapture("/home/pi/deteccion/media/test2.mp4")
 #cap = cv2.VideoCapture(0)
 cap.set(3, 640)  # Ancho (Width)
-cap.set(4, 480)  # Alto (Height)
+cap.set(4, 380)  # Alto (Height)
 
 # Procesa cada quinto frame
 frame_counter = 0
