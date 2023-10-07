@@ -51,7 +51,7 @@ while cap.isOpened():
                     print(f'Persona encontrada en posición: X={x}, Y={y}')
 
         # Mostramos el frame con las personas detectadas
-        cv2.imshow('Person Detection', frame)
+        #cv2.imshow('Person Detection', frame)
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
