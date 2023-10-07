@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 
 # Cargamos el modelo YOLO preentrenado
-net = cv2.dnn.readNet('/Users/josue/Downloads/yolov3.weights', '/Users/josue/Downloads/yolov3.cfg')
+net = cv2.dnn.readNet('yolov3.weights', 'yolov3.cfg')
 
 # Configuramos las clases que YOLO puede detectar (personas en este caso)
 classes = ["person"]
