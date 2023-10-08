@@ -8,22 +8,22 @@ address1 = "/datos"
 address2 = "/posY"
 
 # Cargamos el modelo YOLO preentrenado
-directorio = "/home/pi/deteccion/media/"
-net = cv2.dnn.readNet(directorio + 'yolov3.weights', directorio + 'yolov3.cfg')
-#net = cv2.dnn.readNet('/Users/josue/Downloads/yolov3.weights', '/Users/josue/Downloads/yolov3.cfg')
+#directorio = "/home/pi/deteccion/media/"
+#net = cv2.dnn.readNet(directorio + 'yolov3.weights', directorio + 'yolov3.cfg')
+net = cv2.dnn.readNet('/Users/josue/Downloads/yolov3.weights', '/Users/josue/Downloads/yolov3.cfg')
 
 # Configuramos las clases que YOLO puede detectar (personas en este caso)
 classes = ["person"]
 
 # Inicializamos la cámara con resolución más baja
-cap = cv2.VideoCapture("/Users/josue/Downloads/test2.mp4")
+cap = cv2.VideoCapture("/Users/josue/Downloads/test.mp4")
 #cap = cv2.VideoCapture(1)
 cap.set(3, 640)  # Ancho (Width)
 cap.set(4, 380)  # Alto (Height)
 
 # Procesa cada quinto frame
 frame_counter = 0
-frame_skip = 15
+frame_skip = 1
 
 while cap.isOpened():
     ret, frame = cap.read()
